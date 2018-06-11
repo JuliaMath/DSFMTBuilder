@@ -24,3 +24,16 @@ before_script:
 
 script:
   - julia build_tarballs.jl
+
+deploy:
+    provider: releases
+    api_key:
+        # Note; this api_key is only valid for JuliaMath/DSFMTBuilder; you need
+        # to make your own: https://docs.travis-ci.com/user/deployment/releases/
+        secure: IQ6v1oH7Lg2aBWpWlqJowKrkf8m3JsFW8xKkmTXdWlJ67scZqPv9WccRWXxynkgvsi7XFL9Py/zOVJecRPq/HH6t8ZD4rcqGhN9oRB+sPIurjQHU8COPO/fjY2nIbmrNgLpXMnWOkEnSsUE1KzAX4i+aPJkNaBxvcTYx0B4vmcT1f2MaMSa/INQpW9e0MeDhuNELa7X/AdG0F2RzYSUKbSdYjpHwgNaKaGSoxBKAxjcIOS1PeOAk0Qg98nWRYFgnZKc198YFRzKRs6sgw9tcnR1CzeCfvnzgMctnNuTXSSRSzuIUSploxnGHvRYBo4B0D00qr/Myf92lkRunF5Vu8HAI2I2DZRsuvusLtLz0L/oRbcFV5n9c8NMUaBKz6QCri8OnORUc0cs4Ap8s84EN2MsUI/GVwfkoXWaRVxvQ1O9wptzD2IPsyaUyM9aQU3WFVkTd7QNyWFoBAcdEaioEIfW4i8czaeuZhmQDVg90h4LfuV5xTgk2aTnU+sRVIKWH+Gh0n4OesKtri1M9rXyijSR9DAhf8pXT1kftRh9Ixhee3f7GiJPGk5QXaMP5GmiNfN33vZvieS2Ngb8fQv5LkQW0E/aYeFsqXskxFMLl+XE8CEO4u3QSVvzcvvQYJ/yHp9ph5iiyLDrhGwmZOdcTQSwzcJmDPeWrG38iVc2C6ys=
+    file_glob: true
+    file: products/*
+    skip_cleanup: true
+    on:
+        repo: JuliaMath/DSFMTBuilder
+        tags: true
